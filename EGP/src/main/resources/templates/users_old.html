@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Browse Books</title>
+
+    <!-- Style -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">Public Library</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/books">Browse Books <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/manager">Manage Library</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<main role="main" class="container">
+
+    <div class="starter-template">
+        <h1>Hello <span th:text="${name}"></span></h1>
+        <p class="lead">This page is protected. You have member privileges, so you can browse the books.</p>
+    </div>
+
+    <div class="page-content">
+        <div class="form-v10-content">
+
+            <form class="form-detail" method="post" th:action="@{/upload}" enctype="multipart/form-data" th:object="${user}">
+                <div class="form-left">
+                    <h2>General Infomation</h2>
+
+                    <div class="form-group">
+                        <div class="form-row form-row-1">
+                            <input th:value="${user.getLastName()}" name="first_name" id="first_name" class="input-text" th:disabled="true">
+                        </div>
+                        <div class="form-row form-row-2">
+                            <input type="text" name="last_name" id="last_name" class="input-text" placeholder="Last Name">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <input type="text" name="username" class="username" id="username" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row form-row-3">
+                            <input type="text" name="email" class="email" id="email" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row form-row-3">
+                            <p>&nbsp &nbsp Upload Your Image</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row form-row-3">
+                            <input type="file" name="file" class="form-control-file">
+                        </div>
+
+                    </div>
+                </div>
+
+                <form class="form-detail" method="post" id="myform2">
+                    <div class="form-right">
+                        <h2>Contact Details</h2>
+                        <div class="form-row">
+                            <div>
+                                <input type="date" class="form-control" name="birthdate" access="false" id="birthdate">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <input type="text" name="street" class="street" id="street" placeholder="Street + Nr" required>
+                        </div>
+                        <div class="form-row">
+                            <input type="text" name="city" class="city" id="city" placeholder="City" required>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row form-row-1">
+                                <input type="text" name="zip" class="zip" id="zip" placeholder="Zip Code" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <select name="country">
+                                <option value="country">Country</option>
+                                <option value="Vietnam">Vietnam</option>
+                                <option value="Malaysia">Germany</option>
+                                <option value="India">UK</option>
+                            </select>
+                            <span class="select-btn">
+						  	<i class="zmdi zmdi-chevron-down"></i>
+						</span>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="form-row">
+                                <input type="text" name="phone" class="phone" id="phone" placeholder="Phone Number" required>
+                            </div>
+                        </div>
+                        <div class="form-row-last">
+                            <input type="submit" name="register" class="register" value="Register Badge">
+                        </div>
+                    </div>
+                </form>
+            </form>
+        </div>
+    </div>
+
+</main><!-- /.container -->
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>

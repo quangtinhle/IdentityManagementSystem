@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Anmeldeformular</title>
+    <!-- Style -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <!-- Main Style Css -->
+    <link rel="stylesheet" th:href="@{/css/r-style.css}"/>
+</head>
+<body class="form-v4">
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">E-Government-Portal</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Startseite</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/users">Benutzerdaten<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/print">Ausweisdruck</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Abmelden</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<main role="main" class="container">
+    <div class="starter-template">
+        <h1>Hello <span th:text="${user.userName}"></span></h1>
+        <p class="lead">Diese Seite ist geschützt. Sie haben Benutzerrechte, so dass Sie Ihre Identitätsdaten bearbeiten können.</p>
+    </div>
+<div class="page-content">
+    <div class="form-v4-content">
+        <form class="form-detail" th:object="${user}">
+
+            <h2 th:text = " ${messsage} " align="center"></h2>
+            <h2>Identitätsdaten</h2>
+            <div class="form-group">
+                <div class="form-row form-row-1">
+                    <label for="first_name">Vorname</label>
+                    <input type="text" name="first_name" th:value="${user.getFirstName()}" id="first_name" class="input-text" th:disabled="true">
+                </div>
+                <div class="form-row form-row-1">
+                    <label for="last_name">Nachname</label>
+                    <input type="text" name="last_name" th:value="${user.getLastName()}" id="last_name" class="input-text" th:disabled="true">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <label for="username">Benutzername</label>
+                <input type="text" name="username" id="username1" class="input-text" th:value="${user.getUserName()}" th:disabled="true">
+            </div>
+
+            <div class="form-row">
+                <label for="your_email">E-mail</label>
+                <input type="text" name="your_email" id="your_email1" class="input-text" th:value="${user.getEmail()}" th:disabled="true">
+            </div>
+
+        </form>
+        <form action ="#" class="form-detail" th:action="@{/edit}"  th:object="${user}" method="get" id="myform">
+            <h2 th:text = " ${messsage} " align="center"></h2>
+            <h2>Persönliche Angaben</h2>
+<!--            th:field="${#dates.format(user.getBirthday(), 'yyyy-MM-dd')}"-->
+            <div class="form-row">
+                <label for="username">Geburtsdatum</label>
+                <input type="date" name="username" id="username2" class="input-text" th:value="${user.getBirthday()}" th:disabled="true">
+            </div>
+
+            <div class="form-row">
+                <label for="your_email">Addresse</label>
+                <input type="text" name="your_email" id="your_email2" class="input-text" th:value="${user.getAddress()}" th:disabled="true">
+            </div>
+
+            <div class="form-row">
+                <label for="username">Stadt</label>
+                <input type="text" name="username" id="username3" class="input-text" th:value="${user.getCity()}" th:disabled="true">
+            </div>
+
+            <div class="form-group">
+                <div class="form-row form-row-1">
+                    <label for="your_email">PLZ</label>
+                    <input type="text" name="your_email" id="your_email" class="input-text" th:value="${user.getZipcode()}" th:disabled="true">
+                </div>
+                <div class="form-row form-row-1">
+                    <label for="username">Land</label>
+                    <input type="text" name="username" id="username" class="input-text" th:value="${user.getContry()}" th:disabled="true">
+                </div>
+            </div>
+
+            <div class="form-row-last">
+                <input type="submit" name="register" class="register" value="Bearbeiten">
+            </div>
+        </form>
+    </div>
+</div>
+</main><!-- /.container -->
+
+</body>
+</html>

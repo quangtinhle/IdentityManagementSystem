@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Ausweisdruck</title>
+
+    <!-- Style -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/pn.css">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">E-Government-Portal</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Startseite</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/users">Benutzerdaten</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/print">Ausweisdruck <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Abmelden</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<main role="main" class="container">
+    <div class="starter-template">
+        <h1>Hello <span th:text="${user.userName}"></span></h1>
+        <p class="lead">Diese Seite ist geschützt. Sie haben substanzielle Rechte, so dass Sie Ihren Ausweis drucken können.</p>
+    </div>
+    <div class="main">
+
+        <div class="container1" th:object="${user}">
+            <h2 class="form-title" align = "center">Digitale Ausweis</h2>
+            <div class="signin-content">
+
+                <div class="signin-image">
+<!--                    <figure><img src="images/signin-image.jpg" alt="sing up image"></figure>-->
+                                        <figure><img  th:src="${user.getImage()}" /></figure>
+                    <input type="hidden" th:value="${user.getFirstName()}" id="first_name" class="input-text" th:disabled="true">
+                    <input type="hidden" th:value="${user.getImage()}" class="input-text" th:disabled="true">
+                </div>
+
+                <div class="signin-form">
+
+                    <form method="POST" class="register-form" id="login-form">
+
+                        <div class="row form-group">
+                            <label class="control-label col-sm-4 ">Name: </label>
+                            <div class="col-sm-8 left-form-column">
+                                <input type="text" th:value="${user.toString()}"
+                                       readonly="true" disabled="true" />
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <label class="control-label col-sm-4 ">Geburtsdatum: </label>
+                            <div class="col-sm-8 left-form-column">
+                                <input type="text"  th:value="${user.getBirthday()}"
+                                       readonly="true" disabled="true" />
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <label class="control-label col-sm-4 ">Addresse:</label>
+                            <div class="col-sm-8 left-form-column">
+                                <input type="text"  th:value="${user.getAddress()}"
+                                       readonly="true" disabled="true" />
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <label class="control-label col-sm-4 ">Stadt: </label>
+                            <div class="col-sm-8 left-form-column">
+                                <input type="text"  th:value="${user.getCity()}"
+                                       readonly="true" disabled="true" />
+                            </div>
+                        </div>
+
+
+
+                        <div class="row form-group">
+                            <label class="control-label col-sm-4 "></label>
+                            <div class="col-sm-8 left-form-column form-button">
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="Drucken"/></div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</main><!-- /.container -->
+</body>
+</html>

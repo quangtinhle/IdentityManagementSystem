@@ -1,0 +1,29 @@
+  CREATE TABLE USER (
+      ID BIGINT NOT NULL auto_increment,
+      FIRST_NAME VARCHAR(255) NOT NULL,
+      LAST_NAME VARCHAR(255) NOT NULL,
+      USER_NAME VARCHAR(255) NOT NULL,
+      EMAIL VARCHAR(255) NOT NULL,
+      IDENTITY_ID VARCHAR(255) NOT NULL,
+      BIRTHDAY DATE(255),
+      ADDRESS VARCHAR(255),
+      CITY VARCHAR(255),
+      ZIPCODE VARCHAR(255),
+      CONTRY VARCHAR(255),
+      IMAGE VARCHAR(255),
+      PRIMARY KEY (ID)
+
+  );
+
+/*  CREATE TABLE USERINFOR (
+                               USERID BIGINT NOT NULL,
+                               BIRTHDAY DATE(255),
+                               ADDRESS VARCHAR(255),
+                               ZIPCODE VARCHAR(255),
+                               CONTRY VARCHAR(255),
+                               PRIMARY KEY (USERID)
+  );
+
+  ALTER TABLE USERINFOR
+      ADD CONSTRAINT FK_INFOR_USER FOREIGN KEY (USERID)
+          REFERENCES USER (ID);*/
